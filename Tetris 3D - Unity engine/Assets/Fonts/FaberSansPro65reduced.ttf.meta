@@ -1,0 +1,39 @@
+fileFormatVersion: 2
+guid: e51d2a2391a81584a8c1713bb8e19686
+timeCreated: 1522489056
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Faber Sans Pro reduced
+  fontNames:
+  - Faber Sans Pro reduced
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3dc1c3d03fc660e4a962bac91f5b387f, type: 3}
+  - {fileID: 12800000, guid: 7dd66281a08b0e24bafb5f93490bc457, type: 3}
+  - {fileID: 12800000, guid: bea3d68150f650940b63911c80119488, type: 3}
+  - {fileID: 12800000, guid: c10ed1f1d3396154aadd65cec2ff43dd, type: 3}
+  - {fileID: 12800000, guid: a2a84f64f61e615479445681f3f8f1e6, type: 3}
+  - {fileID: 12800000, guid: a1d9b5f4f36291345b850f869dc6498a, type: 3}
+  - {fileID: 12800000, guid: 90130af475f37db4f9613ae5ba074a3b, type: 3}
+  - {fileID: 12800000, guid: 74991b559287e844583df2e59405311b, type: 3}
+  - {fileID: 12800000, guid: 242387f583f680141b4ba1f3054faa4a, type: 3}
+  - {fileID: 12800000, guid: 975de19777c9eee4b86259a8e6a51b3c, type: 3}
+  - {fileID: 12800000, guid: bebe5cd82ea18bc40ab1b0cb9494ffe5, type: 3}
+  - {fileID: 12800000, guid: 1144ab19d8db43e4693154ceab2908a1, type: 3}
+  - {fileID: 12800000, guid: 274dfe3911414da498c1c31dd9963301, type: 3}
+  - {fileID: 12800000, guid: 3d38cc493488d7d4b8c79ab548decabc, type: 3}
+  - {fileID: 12800000, guid: 5ef38efba78f5fe408abad1309ea66aa, type: 3}
+  - {fileID: 12800000, guid: caf7722d5497efa4981d050b58794822, type: 3}
+  - {fileID: 12800000, guid: 59604c2f77a269344a5829fe61ee9e98, type: 3}
+  - {fileID: 12800000, guid: d137a8ff1a2b1cb4baf63fc2f0c3dc1d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

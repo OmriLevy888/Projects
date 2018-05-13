@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 3dc1c3d03fc660e4a962bac91f5b387f
+timeCreated: 1522489054
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Faber Sans Pro reduced
+  fontNames:
+  - Faber Sans Pro reduced
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 242387f583f680141b4ba1f3054faa4a, type: 3}
+  - {fileID: 12800000, guid: 1144ab19d8db43e4693154ceab2908a1, type: 3}
+  - {fileID: 12800000, guid: 274dfe3911414da498c1c31dd9963301, type: 3}
+  - {fileID: 12800000, guid: 3d38cc493488d7d4b8c79ab548decabc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
