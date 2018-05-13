@@ -1,0 +1,1 @@
+start DOSBox.lnk  -c "cd paint" -c "cycles = max" -c "tasm /zi paint" -c "tlink /v paint" -c "paint"
