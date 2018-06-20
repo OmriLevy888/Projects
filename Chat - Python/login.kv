@@ -1,0 +1,222 @@
+<BlackLabel@Label>:
+    color: 0, 0, 0, 1
+
+<TermsPopup>:
+    size_hint: .65, .55
+    auto_dismiss: False
+    title: 'Terms of use (EULA)'
+    title_color: 1, 1, 1, 1
+
+    background_color: 0, 0, 0, .55
+
+    GridLayout:
+        rows: 2
+
+        Label:
+            size_hint_y: .85
+            text: 'This is where the terms would go if I had any.'
+            halign: 'left'
+            valign: 'top'
+            color: 1, 1, 1, 1
+
+        Button:
+            size_hint_y: .15
+            background_normal: 'deps/images/white.png'
+            background_down: 'deps/images/white.png'
+            text: 'Close'
+            color: 0, 0, 0, 1
+            on_press: root.dismiss()
+
+LoginScreen:
+
+<LoginScreen>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'deps/images/login_background.png'
+
+    GridLayout:
+        cols: 2
+        rows: 1
+        spacing: 35
+        padding: 10
+
+        Login:
+            size_hint_x: .5
+
+        Signup:
+            size_hint_x: .5
+
+<Login>:
+    cols: 1
+    rows: 4
+
+    BoxLayout:
+        size_hint_y: .15
+
+    BlackLabel:
+        size_hint_y: .3
+        text: 'LOG IN'
+        bold: True
+        font_size: '40dp'
+
+    GridLayout:
+        size_hint_y: .7
+        cols: 1
+        rows: 4
+        spacing: 10
+        padding: 10
+
+        Username:
+            id: username_field
+            size_hint_y: .19
+            size_hint_x: .85
+			on_text_validate: root.login(username_field.text, password_field.text)
+
+        Password:
+            id: password_field
+            size_hint_y: .19
+            size_hint_x: .85
+			on_text_validate: root.login(username_field.text, password_field.text)
+
+        BoxLayout:
+            size_hint_y: .43
+
+        Button:
+            size_hint_y: .19
+            size_hint_x: .35
+            text: 'Login'
+            on_press: root.login(username_field.text, password_field.text)
+
+    BoxLayout:
+        size_hint_y: .35
+
+<Signup>:
+    cols: 1
+    rows: 4
+
+    BoxLayout:
+        size_hint_y: .15
+
+    BlackLabel:
+        size_hint_y: .3
+        text: 'SIGN UP'
+        bold: True
+        font_size: '40dp'
+
+    GridLayout:
+        size_hint_y: .7
+        cols: 1
+        rows: 5
+        spacing: 10
+        padding: 10
+
+        Username:
+            id: username_field
+            size_hint_x: .85
+			on_text_validate: root.signup(username_field.text, password_field.text, birth_field.vals.day.text, birth_field.vals.month.text, birth_field.vals.year.text, terms_field.val.active)
+
+        Password:
+            id: password_field
+            size_hint_x: .85
+			on_text_validate: root.signup(username_field.text, password_field.text, birth_field.vals.day.text, birth_field.vals.month.text, birth_field.vals.year.text, terms_field.val.active)
+
+        DateOfBirth:
+            id: birth_field
+            size_hint_x: .85
+
+        Terms:
+            id: terms_field
+            size_hint_x: .85
+
+        Button:
+            size_hint_x: .35
+            text: 'Signup'
+            on_press: root.signup(username_field.text, password_field.text, birth_field.vals.day.text, birth_field.vals.month.text, birth_field.vals.year.text, terms_field.val.active)
+
+    BoxLayout:
+        size_hint_y: .35
+
+<Username>:
+    size_hint_x: .75
+    multiline: False
+	write_tab: False
+
+    text: 'username'
+    background_normal: 'deps/images/text_input.png'
+    on_focus: root.clear()
+
+<Password>:
+    size_hint_x: .75
+    multiline: False
+    password: False
+	write_tab: False
+	
+    background_normal: 'deps/images/text_input.png'
+    text: 'password'
+    on_focus: root.clear()
+
+<DateOfBirth>:
+    cols: 1
+    rows: 2
+    spacing: 5
+    error: err_layout
+    vals: grid
+
+    GridLayout:
+        cols: 3
+        rows: 1
+        size_hint_y: .85
+        id: grid
+        day: day_val
+        month: month_val
+        year: year_val
+
+        Spinner:
+            id: day_val
+            text: 'DD'
+            values: [str(d) for d in xrange(1, 32)]
+            on_text: root.update_day(self.text)
+
+        Spinner:
+            id: month_val
+            text: 'MM'
+            values: [str(d) for d in xrange(1, 13)]
+            on_text: root.update_month(self.text)
+
+        Spinner:
+            id: year_val
+            text: 'YYYY'
+            values: [str(d) for d in xrange(2018, 1950, -1)]
+            on_text: root.update_year(self.text)
+
+    AnchorLayout:
+        anchor_x: 'center'
+        size_hint_y: .15
+        id: err_layout
+        info: err
+
+        Label:
+            id: err
+            text: ''
+            color: 1, 0, 0, 1
+
+
+<Terms>:
+    cols: 2
+    rows: 1
+    val: entry
+
+    Button:
+        text: 'I have read and I agree to the [color=0000FFA0]terms[/color] of use'
+        markup: True
+        size_hint_x: .85
+        color: 0, 0, 0, .5
+        background_color: 0, 0, 0, 0
+        on_press: root.open_terms()
+
+    CheckBox:
+        size_hint_x: .15
+        id: entry
+        color: 0, 0, 0, 1
