@@ -6,3 +6,7 @@ Double click the PaintProgramme.bat to run the programme (it will open DosBox an
 
 # Tetris 3D
 Double click the Tetris3D.exe to run the game. The game is made with the Unity engine. I was too lazy to implement a tutorial / help page so here we go - use WASD to move the pieces and the arrow keys to rotate the pieces (all relative to the camera's current position). Use Q and E to rotate the camera around the platform and hold the space key to get an arial view of the platform. Press the shift key to move the piece by one level and tap the tab key to move the piece down as much as possible (sorry about the music in advance, it's my first and last attempt at creating any music :P).
+
+# Chat
+Deps - must install Kivy and add to path (as of now, will include a .exe file once done working on this project), must set python interpreter!
+Graphics design is not finale. Most of the code is not yet documented. server_main.py is the server source, all of the rest is used for the client. Use application.py to open a client. Must include deps file with all of its content in order to function.
