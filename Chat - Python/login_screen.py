@@ -10,8 +10,20 @@ class TermsPopup(Popup):
     pass
 
 
+class InfoPopup(Popup):
+    def __init__(self, title, content, **kwargs):
+        super(InfoPopup, self).__init__(**kwargs)
+        self.title = title
+        self.lbl.text = content
+
+
 class LoginScreen(Screen):
-    pass
+    def set_info_popup(self):
+        networking.NetworkingData.ls = self
+
+    def display_notification(self, title='', content=''):
+        info_popup = InfoPopup(title, content)
+        info_popup.open()
 
 
 class Login(GridLayout):
@@ -29,11 +41,37 @@ class Signup(GridLayout):
             if username == 'username' or password == 'password':
                 return
 
+            if not self.valid_username(username):
+
+                return
+
+            if not self.valid_date(day, month, year):
+                return
+
             if not networking.NetworkingData.processing:
-                networking.NetworkingData.username = username
                 networking.signup(username, password, day, month, year)
-        else:
-            print 'MUST CHECK TERMS'
+
+    def valid_date(self, day, month, year):
+        return not (day == 'DD' or month == 'MM' or year == 'YYYY')
+
+    def valid_username(self, username):
+        content = None
+
+        if len(username) < 4:
+            content = 'Username has to be at least 4 characters long'
+        elif username[0] == '@':
+            content = 'Username cannot start with @'
+        elif len(username) > 16:
+            content = 'Username cannot be more than 16 characters'
+
+        if content:
+            title = 'Invalid username'
+            content += '\n\n-Username must be at least 4 characters long and no more than 16\n-Username cannot start with @'
+            networking.NetworkingData.ls.display_notification(title, content)
+
+            return False
+
+        return True
 
 
 class Username(TextInput):
@@ -80,6 +118,9 @@ class DateOfBirth(GridLayout):
         self.check_date()
 
     def check_date(self):
+        if self.day == '' or self.month == '' or self.year == '':
+            return
+
         months_30 = ['4', '6', '9', '11']
         if self.month == '2' and int(self.day) > 29:
             self.activate_error()
@@ -100,9 +141,6 @@ class DateOfBirth(GridLayout):
 
 
 class Terms(GridLayout):
-    def update_terms(self, value):
-        print value
-
     def open_terms(self):
         terms_popup = TermsPopup()
         terms_popup.open()

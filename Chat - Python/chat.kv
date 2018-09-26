@@ -5,14 +5,14 @@ ChatScreen:
 
     GridLayout:
         cols: 1
-        rows: 2
+        rows: 1
         id: grid_id
         display: entry
+        user_display: entry_2
 
         GridLayout:
             cols: 2
             rows: 1
-            size_hint_y: .925
 
             GridLayout:
                 cols: 1
@@ -44,33 +44,55 @@ ChatScreen:
                         Label:
                             text: 'ONLINE'
 
-                Label:
-                    size_hint_y: .85
-                    text: 'user-1'
+                ScrollView:
+                    size_hint_x: .85
 
-            ScrollView:
+                    canvas.before:
+                        Color:
+                            rgba: 0, 0, 0, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+                    Label:
+                        id: entry_2
+                        text: '\n   Admins:\n\n   Online:\n\n   Offline'
+                        markup: True
+                        color: 1, 1, 1, 1
+                        font_size: 15
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        on_size: root.set_user_display(self)
+
+            GridLayout:
                 size_hint_x: .75
+                rows: 2
+                cols: 1
 
-                canvas.before:
-                    Color:
-                        rgba: 1, 1, 1, 1
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
+                ScrollView:
+                    size_hint_y: .925
 
-                Label:
-                    id: entry
-                    text: ''
-                    markup: True
-                    color: 0, 0, 0, 1
-                    font_size: 15
-                    text_size: self.width, None
-                    size_hint_y: None
-                    height: self.texture_size[1]
-                    on_size: root.set_display(self)
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
 
-        TextInput:
-            size_hint_y: .075
-            multiline: False
-            background_normal: 'deps/images/text_input.png'
-            on_text_validate: root.submit_text(self, self.text)
+                    Label:
+                        id: entry
+                        text: ''
+                        markup: True
+                        color: 0, 0, 0, 1
+                        font_size: 15
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        on_size: root.set_display(self)
+
+                TextInput:
+                    size_hint_y: .075
+                    multiline: False
+                    background_normal: 'deps/images/text_input.png'
+                    on_text_validate: root.submit_text(self, self.text)

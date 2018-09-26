@@ -1,8 +1,7 @@
 from kivy.uix.screenmanager import Screen
 from kivy.clock import Clock
-
+import datetime
 import sys
-
 import networking
 
 
@@ -26,20 +25,20 @@ class ChatScreen(Screen):
         status = networking.process_message(text)
 
         if status == OK:
-            print networking.NetworkingData.colour
-            self.grid.display.text += '[color=' + networking.NetworkingData.colour + '][b]Me:[/b][/color] ' + text + '\n'
+            now = datetime.datetime.now()
+            current_time = str(now.hour).zfill(2) + ':' + str(now.minute).zfill(2)
+            self.grid.display.text += '[b][' + current_time + '] [color=' + networking.NetworkingData.colour + ']Me:[/b][/color] ' + text + '\n'
         else:
             display_error(status)
 
     def quit(self):
-        sys.exit()
+        Clock.schedule_once(sys.exit, 0.2)
 
     def set_display(self, display):
         networking.NetworkingData.chat_display = display
 
-
-def add_line(line):
-    tb.text += line + '\n'
+    def set_user_display(self, display):
+        networking.NetworkingData.user_display = display
 
 
 def set_focus(dt):
